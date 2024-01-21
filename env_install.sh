@@ -21,7 +21,6 @@ GEANY_PID=$!
 sleep 1
 kill -9 $GEANY_PID
 
-mkdir $(dirname $FILETYPES_FILE)
 mkdir $(dirname $COLOR_SCHEMES_FILE)
 
 curl -o $CONFIG_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/geany.conf"
