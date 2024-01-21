@@ -30,7 +30,8 @@ curl -o $COLOR_SCHEMES_FILE "https://raw.githubusercontent.com/Wojciech-Baranows
 curl -o $FILETYPES_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/filetypes.cpp"
 curl -o $TEMPLATE_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/template.cpp"
 
-#shell settings
+#shell settings:
+
 sed -i '/force_color_prompt=/c\force_color_prompt=yes' $BASHRC_FILE
 if ! grep -q "ulimit" $BASHRC_FILE; then
 	echo -e "\nulimit -s 2000311" >> $BASHRC_FILE
