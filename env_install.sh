@@ -9,16 +9,26 @@ sudo apt-get install -y xdotool
 #geany config:
 
 USERNAME=$(whoami)
-KEYBINDINGS_FILE="/home/$USERNAME/.config/geany/keybindings.conf"
 CONFIG_FILE="/home/$USERNAME/.config/geany/geany.conf"
-FILETYPES_FILE="/home/$USERNAME/.config/geany/filedefs/filetypes.cpp"
-BASHRC_FILE="/home/$USERNAME/.bashrc"
-COLOR_SCHEMES_DIR="/home/$USERNAME/.config/geany/colorschemes"
+KEYBINDINGS_FILE="/home/$USERNAME/.config/geany/keybindings.conf"
 COLOR_SCHEMES_FILE="/home/$USERNAME/.config/geany/colorschemes/bespin.conf"
+FILETYPES_FILE="/home/$USERNAME/.config/geany/filedefs/filetypes.cpp"
+TEMPLATE_FILE="/home/$USERNAME/.config/geany/templates/files/template.cpp"
+BASHRC_FILE="/home/$USERNAME/.bashrc"
 
-#color scheme
-mkdir dirname $(COLOR_SCHEMES)
-curl -o $COLOR_SCHEMES_FILE "https://raw.githubusercontent.com/geany/geany-themes/master/colorschemes/bespin.conf"
+geany &
+GEANY_PID=$!
+sleep 1
+kill -9 $GEANY_PID
+
+mkdir $(dirname $FILETYPES_FILE)
+mkdir $(dirname $COLOR_SCHEMES_FILE)
+
+curl -o $CONFIG_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/geany.conf"
+curl -o $KEYBINDINGS_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/keybindings.conf"
+curl -o $COLOR_SCHEMES_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/bespin.conf"
+curl -o $FILETYPES_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/filetypes.cpp"
+curl -o $TEMPLATE_FILE "https://raw.githubusercontent.com/Wojciech-Baranowski/GeanyConfig/main/template.cpp"
 
 #shell settings
 sed -i '/force_color_prompt=/c\force_color_prompt=yes' $BASHRC_FILE
