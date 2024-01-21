@@ -3,8 +3,6 @@
 sudo apt-get install -y g++
 sudo apt-get install -y git
 sudo apt-get install -y geany
-sudo apt-get install -y wmctrl
-sudo apt-get install -y xdotool
 
 #geany config:
 
